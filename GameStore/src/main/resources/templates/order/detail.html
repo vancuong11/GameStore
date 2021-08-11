@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index::dynamic(~{::main})}">
+
+<body>
+        <main class="main" th:object="${order}">
+            <div class="page-header text-center" style="background-image: url('/assets/images/page-header-bg.jpg')">
+                <div class="container">
+                    <h1 class="page-title">OrderDetail<span>Shop</span></h1>
+                </div>
+                <!-- End .container -->
+            </div>
+            <!-- End .page-header -->
+            <nav aria-label="breadcrumb" class="breadcrumb-nav " style="background: white;">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">OrderDetail</li>
+                    </ol>
+                </div>
+                <!-- End .container -->
+            </nav>
+            <!-- End .breadcrumb-nav -->
+
+            <div class="page-content" style="background: white;">
+                <div class="panel panel-primary container">
+            <div class="panel-heading">
+                <h4>ORDER INFORMATION</h4>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group col-sm-4">
+                        <div>Order Number: </div>
+                        <input th:field="*{id}" class="form-control" readonly>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <div>Purchaser: </div>
+                        <input th:field="*{account.username}" class="form-control" readonly>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <div>Purchased Date: </div>
+                        <input th:field="*{createDate}" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <div>Shipping Address: </div>
+                        <textarea th:field="*{address}" class="form-control" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary container">
+            <div class="panel-heading">
+                <h4>ORDER LINES</h4>
+            </div>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <th></th>
+                        <th>PRICE</th>
+                       
+                        <th>QUANTITY</th>
+                        <th>AMOUNT</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="detail:*{orderDetails}" th:object="${detail}">
+                        <td>[[*{product.id}]]</td>
+                        <td>[[*{product.name}]]</td>
+                        <td>
+                        	<img style="width: 90px;height: 120px" th:src="@{|/images/*{product.image}|}" alt="Product image">
+                        </td>
+                        <td>$[[*{#numbers.formatDecimal(price,0,'COMMA',2,'POINT')}]]</td>
+                        <td>
+                            [[*{quantity}]]
+                        </td>
+                        <td>$[[*{#numbers.formatDecimal(price * quantity,0,'COMMA',2,'POINT')}]]</td>
+
+                    </tr>
+                </tbody>
+            </table>
+            <!-- <div class="float-right">
+            	TOTAL: ${{favorite.amount | number : 2}}
+            </div> -->
+        </div>
+            </div>
+            <!-- End .page-content -->
+        </main>
+        <!-- End .main -->
+
+        
+    </div>
+    <!-- End .page-wrapper -->
+    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay"></div>
+    <!-- End .mobil-menu-overlay -->
+
+    <div class="mobile-menu-container">
+        <div class="mobile-menu-wrapper">
+            <span class="mobile-menu-close"><i class="icon-close"></i></span>
+
+            <form action="#" method="get" class="mobile-search">
+                <label for="mobile-search" class="sr-only">Search</label>
+                <input type="search" class="form-control" name="mobile-search" id="mobile-search" placeholder="Search in..." required>
+                <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+            </form>
+
+            <nav class="mobile-nav">
+                <ul class="mobile-menu">
+                    <li class="active">
+                        <a href="index.html">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="product.html" class="sf-with-ul">Product</a>
+
+                    </li>
+                    <li>
+                        <a href="#">Pages</a>
+
+                    </li>
+                    <li>
+                        <a href="blog.html">Blog</a>
+
+
+                    </li>
+                    <li>
+                        <a href="elements-list.html">Elements</a>
+
+                    </li>
+                </ul>
+            </nav>
+            <!-- End .mobile-nav -->
+
+            <div class="social-icons">
+                <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
+            </div>
+            <!-- End .social-icons -->
+        </div>
+        <!-- End .mobile-menu-wrapper -->
+    </div>
+    <!-- End .mobile-menu-container -->
+
+
+
+   
+</body>
+
+
+<!-- molla/dashboard.html  22 Nov 2019 10:03:13 GMT -->
+
+</html>

@@ -1,0 +1,52 @@
+<div class="panel panel-default">
+	<table class="table table-condensed">
+		<thead class="bg-success" style="font-variant: small-caps;">
+			<tr>
+				<th>Order No</th>
+				<th>Username</th>
+				<th>CreateDate</th>
+				<th>Address</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Quantity</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in details">
+				<td>{{item.order.id}}</td>
+				<td>{{item.order.account.username}}</td>
+				<td>{{item.order.createDate | date:'dd-MM-yyyy'}}</td>
+				<td>{{item.order.address}}</td>
+				<td>{{item.product.name}}</td>
+				<td>{{item.price}}</td>
+				<td>{{item.quantity}}</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<!-- <div class="panel-body mt-4">
+		<div class="row">
+			<div class="form-group col-sm-4">
+				<div>Order Number:</div>
+				<input ng-model="form.id" class="form-control" readonly>
+			</div>
+			<div class="form-group col-sm-4">
+				<div>Purchaser:</div>
+				<input ng-model="form.account.username" class="form-control"
+					readonly>
+			</div>
+			<div class="form-group col-sm-4">
+				<div>Purchased Date:</div>
+				<input ng-model="form.createDate" type="date"
+					class="form-control" readonly>
+			</div>
+			<div class="form-group col-sm-12">
+				<div>Address:</div>
+				<textarea ng-model="form.address" class="form-control" readonly>
+			</div>
+		</div>
+		
+
+	</div> -->
+
+</div>

@@ -1,0 +1,27 @@
+<div>
+	<table class="table table-condensed">
+		<thead class="bg-success" style="font-variant: small-caps;">
+			<tr>
+				<th>Order No</th>
+				<th>Username</th>
+				<th>CreateDate</th>
+				<th>Address</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Quantity</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in details">
+				<td>{{item.order.id}}</td>
+				<td>{{item.order.account.username}}</td>
+				<td>{{item.order.createDate | date:'dd-MM-yyyy'}}</td>
+				<td>{{item.order.address}}</td>
+				<td>{{item.product.name}}</td>
+				<td>{{item.price}}</td>
+				<td>{{item.quantity}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>

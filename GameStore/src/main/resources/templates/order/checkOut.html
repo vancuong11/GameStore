@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/index::dynamic(~{::main})}">
+
+<body>
+	<main class="main">
+	<nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0"
+		style="background: white;">
+		<div class="container d-flex align-items-center">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+				<li class="breadcrumb-item"><a href="#">Products</a></li>
+				<li class="breadcrumb-item active" aria-current="page">CheckOut</li>
+			</ol>
+
+
+		</div>
+		<!-- End .container -->
+	</nav>
+	<!-- End .breadcrumb-nav -->
+	<!-- <div style="background: white;" th:replace="~{/cart/cart::shopping_cart}"></div> -->
+	<div class="page-content" style="background: white;">
+		<div class="container">
+			<div class="product-details-top">
+				<div>
+					<form>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<div>Purchaser: </div>
+                        <div class="form-control" id="username">[[${#request.remoteUser}]]</div>
+							</div>
+							<div class="form-group col-md-6">
+								<div>Order Date: </div>
+                        <div class="form-control">{{order.createDate | date:'dd-MM-yyyy'}}</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputAddress">Address</label> 
+							<textarea ng-model="order.address" class="form-control"></textarea>
+						</div>
+						<button ng-click="order.purchase()" class="btn btn-primary">Purchaser</button>
+					</form>
+
+
+				</div>
+				<!-- End .row -->
+			</div>
+			<!-- End .product-details-top -->
+		</div>
+		<!-- End .container -->
+	</div>
+
+	<!-- Mobile Menu -->
+	<div class="mobile-menu-overlay"></div>
+	<!-- End .mobil-menu-overlay -->
+
+	<div class="mobile-menu-container">
+		<div class="mobile-menu-wrapper">
+			<span class="mobile-menu-close"><i class="icon-close"></i></span>
+
+			<form action="#" method="get" class="mobile-search">
+				<label for="mobile-search" class="sr-only">Search</label> <input
+					type="search" class="form-control" name="mobile-search"
+					id="mobile-search" placeholder="Search in..." required>
+				<button class="btn btn-primary" type="submit">
+					<i class="icon-search"></i>
+				</button>
+			</form>
+
+			<nav class="mobile-nav">
+				<ul class="mobile-menu">
+					<li class="active"><a th:href="@{/}">Home</a></li>
+
+					<li><a href="product.html" class="sf-with-ul">Product</a></li>
+					<li><a href="#">Pages</a></li>
+					<li><a href="blog.html">Blog</a></li>
+					<li><a href="elements-list.html">Elements</a></li>
+				</ul>
+			</nav>
+			<!-- End .mobile-nav -->
+
+			<div class="social-icons">
+				<a href="#" class="social-icon" target="_blank" title="Facebook"><i
+					class="icon-facebook-f"></i></a> <a href="#" class="social-icon"
+					target="_blank" title="Twitter"><i class="icon-twitter"></i></a> <a
+					href="#" class="social-icon" target="_blank" title="Instagram"><i
+					class="icon-instagram"></i></a> <a href="#" class="social-icon"
+					target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
+			</div>
+			<!-- End .social-icons -->
+		</div>
+		<!-- End .mobile-menu-wrapper -->
+	</div>
+	<!-- End .mobile-menu-container --> </main>
+</body>
+
+</html>
