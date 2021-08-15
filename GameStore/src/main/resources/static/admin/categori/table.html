@@ -1,0 +1,43 @@
+<div>
+	<table class="table table-condensed">
+		<thead class="bg-success" style="font-variant: small-caps;">
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in pager.items">
+				<td>{{item.id}}</td>
+				<td>{{item.name}}</td>
+				
+				<td >
+					<div class="btn-group btn-group-xs float-right">
+						<button ng-click="edit(item)" class="btn btn-warning">
+							<i class="fas fa-edit"></i>
+						</button>
+						<button ng-click="delete(item)" class="btn btn-danger"><i class="fas fa-window-close"></i></button>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--  -->
+	<div class="panel-footer text-center">
+        <button ng-click="pager.first()" class="btn btn-danger">
+           <i class="fas fa-fast-backward"></i>
+        </button>
+        <button ng-click="pager.prev()" class="btn btn-primary">
+            <i class="fas fa-step-backward"></i>
+        </button>
+        <button class="btn btn-succes">{{pager.page + 1}} of {{pager.count}}</button>
+        <button ng-click="pager.next()" class="btn btn-primary">
+            <i class="fas fa-step-forward"></i>
+        </button>
+        <button ng-click="pager.last()" class="btn btn-danger">
+           <i class="fas fa-fast-forward"></i>
+        </button>
+
+    </div>
+</div>

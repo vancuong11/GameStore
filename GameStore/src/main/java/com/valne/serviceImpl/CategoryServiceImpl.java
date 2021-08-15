@@ -17,5 +17,25 @@ public class CategoryServiceImpl implements CategoryService {
 		// TODO Auto-generated method stub
 		return dao.findAll();
 	}
+	@Override
+	public Category create(Category category) {
+		// TODO Auto-generated method stub
+		return dao.save(category);
+	}
+	@Override
+	public Category update(Category category) {
+		// TODO Auto-generated method stub
+		return dao.save(category);
+	}
+	@Override
+	public void delete(Integer id) {
+		// TODO Auto-generated method stub
+		dao.deleteById(id);
+	}
+	@Override
+	public Category findById(Integer id) {
+		// TODO Auto-generated method stub
+		return dao.findById(id).get();
+	}
 
 }

@@ -13,28 +13,28 @@
     <meta name="description" content="Molla - Bootstrap eCommerce Template">
     <meta name="author" content="p-themes">
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/icons/favicon-16x16.png">
-    <link rel="manifest" href="../assets/images/icons/site.html">
-    <link rel="mask-icon" href="../assets/images/icons/safari-pinned-tab.svg" color="#666666">
-    <link rel="shortcut icon" href="../assets/images/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/icons/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/icons/site.html">
+    <link rel="mask-icon" href="/assets/images/icons/safari-pinned-tab.svg" color="#666666">
+    <link rel="shortcut icon" href="/assets/images/icons/favicon.ico">
     <meta name="apple-mobile-web-app-title" content="Molla">
     <meta name="application-name" content="Molla">
     <meta name="msapplication-TileColor" content="#cc9966">
-    <meta name="msapplication-config" content="../assets/images/icons/browserconfig.xml">
+    <meta name="msapplication-config" content="/assets/images/icons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-    <link rel="stylesheet" href="../assets/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css">
+    <link rel="stylesheet" href="/assets/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css">
     <!-- Plugins CSS File -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/plugins/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="../assets/css/plugins/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/plugins/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="/assets/css/plugins/magnific-popup/magnific-popup.css">
     <!-- Main CSS File -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/skins/skin-demo-19.css">
-    <link rel="stylesheet" href="../assets/css/demos/demo-19.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/skins/skin-demo-19.css">
+    <link rel="stylesheet" href="/assets/css/demos/demo-19.css">
     <!-- Angular -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js" integrity="sha512-7oYXeK0OxTFxndh0erL8FsjGvrl2VMDor6fVqzlLGfwOQQqTbYsGPv4ZZ15QHfSk80doyaM0ZJdvkyDcVO7KFA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
@@ -54,15 +54,15 @@
 
                             <ul class="top-menu">
                                 <li>
-                                    <a href="#">Links</a>
+                                    <a href="#" th:text="#{header.link}">Links</a>
                                     <ul>
                                         <li>
                                             <div class="header-dropdown">
-                                                <a href="#">English</a>
+                                                <a href="#" th:text="#{header.laguage}">English</a>
                                                 <div class="header-menu">
                                                     <ul>
-                                                        <li><a href="#">English</a></li>
-                                                        <li><a href="#">Vietnam</a></li>
+                                                        <li><a href="?lang=en">English</a></li>
+                                                        <li><a href="?lang=vi">Vietnam</a></li>
                                                     </ul>
                                                 </div>
                                                 <!-- End .header-menu -->
@@ -70,12 +70,12 @@
                                         </li>
                                         <th:bock th:unless="${#request.remoteUser}">
                                             <li>
-                                                <a th:href="@{/security/login/form}">Sign in / Sign up</a>
+                                                <a th:href="@{/security/login/form}" th:text="#{header.login}">Sign in / Sign up</a>
                                             </li>
                                         </th:bock>
                                         <th:bock th:if="${#request.remoteUser}">
                                             <li>
-                                                <a href="#"><b class="mr-1">Welcome: </b>  [[ ${#request.remoteUser}]]</a>
+                                                <a href="#"><b class="mr-1" th:text="#{header.welcome}">Welcome: </b> <p id="username">[[${#request.remoteUser}]]</p> </a>
                                             </li>
                                         </th:bock>
                                     </ul>
@@ -99,7 +99,7 @@
                             </button>
 
                             <a th:href="@{/}" class="logo">
-                                <img src="../assets/images/demos/demo-19/logo-footer.png" alt="Molla Logo" width="105" height="25">
+                                <img src="/assets/images/demos/demo-19/logo-footer.png" alt="Molla Logo" width="105" height="25">
                             </a>
                         </div>
                         <!-- End .header-left -->
@@ -112,7 +112,7 @@
                                         <label for="q" class="sr-only">Search</label>
                                         <button class="btn btn-primary" type="submit"><i
                                                 class="icon-search"></i></button>
-                                        <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
+                                        <input type="search" class="form-control" name="q" id="q" placeholder="Search..." required th:text="#{header.search}">
                                     </div>
                                     <!-- End .header-search-wrapper -->
                                 </form>
@@ -123,11 +123,11 @@
                         <div class="header-right">
                             <div class="header-dropdown-link">
                                 <div class="account">
-                                    <a href="dashboard.html" title="My account">
+                                    <a th:href="@{/order/list}" title="My account">
                                         <div class="icon">
                                             <i class="icon-user"></i>
                                         </div>
-                                        <p>Account</p>
+                                        <p th:text="#{header.account}">Account</p>
                                     </a>
                                 </div>
                                 <!-- End .compare-dropdown -->
@@ -136,9 +136,9 @@
                                     <a th:href="@{/favorites}" title="Wishlist">
                                         <div class="icon">
                                             <i class="icon-heart-o"></i>
-                                            <span class="wishlist-count badge">3</span>
+                                            <span class="wishlist-count badge">{{favorite.count}}</span>
                                         </div>
-                                        <p>Wishlist</p>
+                                        <p th:text="#{header.wishlist}">Wishlist</p>
                                     </a>
                                 </div>
                                 <!-- End .compare-dropdown -->
@@ -149,66 +149,43 @@
                                             <i class="icon-shopping-cart"></i>
                                             <span class="cart-count">{{cart.count}}</span>
                                         </div>
-                                        <p>Cart</p>
+                                        <p th:text="#{header.cart}">Cart</p>
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <div class="dropdown-cart-products">
-                                            <div class="product">
+                                            <div class="product" ng-repeat="item in cart.items">
                                                 <div class="product-cart-details">
                                                     <h4 class="product-title">
-                                                        <a href="product.html">Beige knitted elastic runner shoes</a>
+                                                        <a href="#">{{item.name}}</a>
                                                     </h4>
 
                                                     <span class="cart-product-info">
-                                                        <span class="cart-product-qty">1</span> x $84.00
+                                                        <span class="cart-product-qty">{{item.qty}}</span> x ${{item.price * item.qty| number:2}}
                                                     </span>
                                                 </div>
                                                 <!-- End .product-cart-details -->
 
                                                 <figure class="product-image-container">
                                                     <a href="product.html" class="product-image">
-                                                        <img src="../assets/images/products/cart/product-1.jpg" alt="product">
+                                                        <img src="/images/{{item.image}}" alt="product">
                                                     </a>
                                                 </figure>
-                                                <a href="#" class="btn-remove" title="Remove Product"><i
-                                                        class="icon-close"></i></a>
+                                                <button ng-click="cart.remove(item.id)" class="btn-remove" title="Remove Product"><i
+                                                        class="icon-close"></i></button>
                                             </div>
-                                            <!-- End .product -->
-
-                                            <div class="product">
-                                                <div class="product-cart-details">
-                                                    <h4 class="product-title">
-                                                        <a href="product.html">Blue utility pinafore denim dress</a>
-                                                    </h4>
-
-                                                    <span class="cart-product-info">
-                                                        <span class="cart-product-qty">1</span> x $76.00
-                                                    </span>
-                                                </div>
-                                                <!-- End .product-cart-details -->
-
-                                                <figure class="product-image-container">
-                                                    <a href="product.html" class="product-image">
-                                                        <img src="../assets/images/products/cart/product-2.jpg" alt="product">
-                                                    </a>
-                                                </figure>
-                                                <a href="#" class="btn-remove" title="Remove Product"><i
-                                                        class="icon-close"></i></a>
-                                            </div>
-                                            <!-- End .product -->
                                         </div>
                                         <!-- End .cart-product -->
 
                                         <div class="dropdown-cart-total">
                                             <span>Total</span>
 
-                                            <span class="cart-total-price">${{cart.amount| number: 2}}</span>
+                                            <span class="cart-total-price">${{cart.amount}}</span>
                                         </div>
                                         <!-- End .dropdown-cart-total -->
 
                                         <div class="dropdown-cart-action">
-                                            <a href="cart.html" class="btn btn-primary">View Cart</a>
+                                            <a th:href="@{/cart/view}" class="btn btn-primary">View Cart</a>
                                             <a href="checkout.html" class="btn btn-outline-primary-2"><span>Checkout</span><i
                                                     class="icon-long-arrow-right"></i></a>
                                         </div>
@@ -216,7 +193,6 @@
                                     </div>
                                     <!-- End .dropdown-menu -->
                                 </div>
-                                <!-- End .cart-dropdown -->
                             </div>
                         </div>
                         <!-- End .header-right -->
@@ -231,23 +207,26 @@
                             <nav class="main-nav">
                                 <ul class="menu sf-arrows" style="padding: 5px 0px 5px 0px ;">
                                     <li class="megamenu-container active">
-                                        <a th:href="@{/}">Home</a>
+                                        <a th:href="@{/}" th:text="#{nav.home}">Home</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="product.html" th:text="#{nav.product}">Product</a>
                                     </li>
                                     <li>
-                                        <a href="category.html">Shop</a>
+                                        <a href="#" th:text="#{nav.page}">Pages</a>
                                     </li>
                                     <li>
-                                        <a href="product.html">Product</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Pages</a>
-                                    </li>
-                                    <li>
-                                        <a href="blog.html">Blog</a>
+                                        <a href="blog.html" th:text="#{nav.about}">Blog</a>
                                     </li>
                                     <li>
                                         <a href="elements-list.html">Elements</a>
                                     </li>
+                                    <th:block th:if ="${#request.isUserInRole('ADMIN')}">
+                                    	<li>
+                                    	<a th:href="@{/admin/index}">Administrator</a>
+                                    	</li>
+                                    </th:block>
                                 </ul>
                                 <!-- End .menu -->
                             </nav>
@@ -275,7 +254,7 @@
                     <div class="row">
                         <div class="col-xl-3 d-none d-xl-block">
                             <nav class="side-nav">
-                                <div class="sidenav-title">Browse Categories</div>
+                                <div class="sidenav-title" th:text="#{nav.categori}">Browse Categories</div>
                                 <!-- End .sidenav-title -->
                                 <ul class="menu-vertical sf-arrows">
                                     <li th:each="c:${cates}">
@@ -300,19 +279,19 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img class="d-block w-100" src="../assets/images/demos/demo-19/banners/banner-1.jpg" alt="First slide">
+                                        <img class="d-block w-100" src="/assets/images/demos/demo-19/banners/banner-1.jpg" alt="First slide">
                                         <div class="banner-content">
                                             <h4 class="banner-subtitle">Pre-order now</h4>
-                                            <img src="../assets/images/demos/demo-19/banners/banner-1-title.png" alt="Banner 1 Title" width="217" height="54" class="mb-1">
+                                            <img src="/assets/images/demos/demo-19/banners/banner-1-title.png" alt="Banner 1 Title" width="217" height="54" class="mb-1">
                                             <a href="#" class="banner-link size-lg">Pre-Order Now<i
                                                     class="icon-long-arrow-right"></i></a>
                                         </div>
                                     </div>
                                     <div class="carousel-item">
-                                        <img class="d-block w-100" src="../assets/images/demos/demo-19/banners/banner-11.jpg" alt="Second slide">
+                                        <img class="d-block w-100" src="/assets/images/demos/demo-19/banners/banner-11.jpg" alt="Second slide">
                                     </div>
                                     <div class="carousel-item">
-                                        <img class="d-block w-100" src="../assets/images/demos/demo-19/banners/banner-12.jpg" alt="Third slide">
+                                        <img class="d-block w-100" src="/assets/images/demos/demo-19/banners/banner-12.jpg" alt="Third slide">
                                     </div>
                                 </div>
                                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -331,11 +310,11 @@
                         <div class="col-sm-6 col-lg-4 col-xl-3">
                             <div class="banner banner-overlay banner-sm content-right">
                                 <a href="#">
-                                    <img src="../assets/images/demos/demo-19/banners/banner-2.jpg" alt="Banner">
+                                    <img src="/assets/images/demos/demo-19/banners/banner-2.jpg" alt="Banner">
                                 </a>
                                 <div class="banner-content text-right">
                                     <h4 class="banner-subtitle">Weekend Offer</h4>
-                                    <img class="banner-title-img" src="../assets/images/demos/demo-19/banners/banner-2-title.png" alt="Banner-2">
+                                    <img class="banner-title-img" src="/assets/images/demos/demo-19/banners/banner-2-title.png" alt="Banner-2">
                                     <h4 class="banner-price">Save<span class="price">$19,99</span></h4>
                                     <a href="#" class="banner-link">Buy Now<i class="icon-long-arrow-right"></i></a>
                                 </div>
@@ -344,10 +323,10 @@
 
                             <div class="banner banner-overlay d-none d-lg-block banner-sm content-right align-center">
                                 <a href="#">
-                                    <img src="../assets/images/demos/demo-19/banners/banner-3.jpg" alt="Banner">
+                                    <img src="/assets/images/demos/demo-19/banners/banner-3.jpg" alt="Banner">
                                 </a>
                                 <div class="banner-content text-right">
-                                    <img class="banner-title-img" src="../assets/images/demos/demo-19/banners/banner-3-title.png" alt="Banner-3">
+                                    <img class="banner-title-img" src="/assets/images/demos/demo-19/banners/banner-3-title.png" alt="Banner-3">
                                     <h5 class="text-white">35% OFF</h5>
                                     <a href="#" class="banner-link">Buy Now<i class="icon-long-arrow-right"></i></a>
                                 </div>
@@ -359,11 +338,11 @@
                         <div class="col-sm-6 col-lg-3">
                             <div class="banner banner-overlay banner-sm content-right align-center">
                                 <a href="#">
-                                    <img src="../assets/images/demos/demo-19/banners/banner-4.jpg" alt="Banner">
+                                    <img src="/assets/images/demos/demo-19/banners/banner-4.jpg" alt="Banner">
                                 </a>
                                 <div class="banner-content" style="left: auto; right: 3rem; align-items: flex-start;">
                                     <h4 class="banner-subtitle">Weekend Sale</h4>
-                                    <img class="banner-title-img" src="../assets/images/demos/demo-19/banners/banner-4-title.png" alt="Banner-4">
+                                    <img class="banner-title-img" src="/assets/images/demos/demo-19/banners/banner-4-title.png" alt="Banner-4">
                                     <h4 class="banner-price"><span class="off">25% off</span></h4>
                                     <a href="#" class="banner-link">Buy Now<i class="icon-long-arrow-right"></i></a>
                                 </div>
@@ -376,16 +355,16 @@
                             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img class="d-block w-100" src="../assets/images/demos/demo-19/banners/banner-5.jpg" alt="First slide">
+                                        <img class="d-block w-100" src="/assets/images/demos/demo-19/banners/banner-5.jpg" alt="First slide">
                                         <div class="banner-content">
                                             <h4 class="banner-subtitle">Amazing Value</h4>
-                                            <img class="banner-title-img mb-1" src="../assets/images/demos/demo-19/banners/banner-5-title.png" alt="Banner-5">
+                                            <img class="banner-title-img mb-1" src="/assets/images/demos/demo-19/banners/banner-5-title.png" alt="Banner-5">
                                             <a href="#" class="banner-link">Pre-Order Now<i
                                                 class="icon-long-arrow-right"></i></a>
                                         </div>
                                     </div>
                                     <div class="carousel-item">
-                                        <img class="d-block w-100" src="../assets/images/demos/demo-19/banners/banner-13.png" alt="Second slide">
+                                        <img class="d-block w-100" src="/assets/images/demos/demo-19/banners/banner-13.png" alt="Second slide">
                                     </div>
                                     <!-- <div class="carousel-item">
                                     <img class="d-block w-100" src="..." alt="Third slide">

@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.valne.service.CategoriService;
+import com.valne.service.CategoryService;
 @Service
 public class GolbalInterceptor implements HandlerInterceptor{
 	@Autowired
-	CategoriService categoriService;
+	CategoryService categoriService;
 	
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,

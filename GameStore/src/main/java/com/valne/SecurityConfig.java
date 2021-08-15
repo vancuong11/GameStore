@@ -64,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 //		phan quyen login
 		http.authorizeRequests()
-			.antMatchers("/order/**").authenticated()
+			.antMatchers("/order/**","/favorites/**").authenticated()
 			.antMatchers("/admin/**").hasAnyRole("ADMIN","USER")
 			.antMatchers("/rest/authorities").hasRole("ADMIN")
 			.anyRequest().permitAll();
